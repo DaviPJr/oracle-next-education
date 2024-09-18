@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+.cabecalho {
+    width: 1440px;
+    height: 138px;
+    padding: 37px 0px;
+    background: #000000;
+    color: aliceblue;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.cabecalho-img{
+    width: 260px;
+    height: 64px;
+    gap: 0px;
+    opacity: 0px;
+}
+
+.cabecalho-item {
+    margin-left: 112px;
+}
+
+.cabecalho-navegacao-item{
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    margin-right: 112px;
+}
+
+.cabecalho__navegacao--item {
+    color: inherit; /* Herda a cor do texto padrão, ou defina uma cor específica */
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+    font-family: "Montserrat", sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    
+}
+
+.entre-contato {
+    background-image: url('./img/Group\ 4.png'); 
+    width: 1440px;
+    height: 620px;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza horizontalmente */
+    justify-content: center; /* Centraliza verticalmente */
+    width: 100%; /* O main vai ocupar toda a largura disponível */
+    height: 100vh; /* Ocupar toda a altura da tela */
+    position: relative; /* Mantém o posicionamento natural, mas permite o uso de z-index */
+    z-index: 10; /* Garante que a main fique acima da section */
+    margin-bottom: 250px; /
+}
+
+.formulario-titulo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 1200px;
+    margin-top: 184px;
+}
+
+h2 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 39.01px;
+    text-align: center;
+}
+
+.elemento-vermelho {
+    width: 180px;
+    height: 4px;
+    gap: 0px;
+    opacity: 0px;
+    background: #B81515;
+    margin-bottom: 56px;
+}
+
+p {
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 32px;
+    text-align: center;
+
+}
+
+.formulario-elementos-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 790px;
+    height: 538px;
+    margin-top: 56px;
+}
+
+.nome {
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 32px;
+    text-align: left;
+}
+
+.telefone {
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 32px;
+    text-align: left;
+}
+
+.email {
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 32px;
+    text-align: left;
+}
+
+.assunto-title {
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 32px;
+    text-align: left;
+}
+
+.assunto-input {
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 32px;
+    text-align: left;
+}
+
+button {
+    width: 280px;
+    height: 64px;
+    padding: 16px;
+    gap: 32px;
+    border-radius: 8px;
+    opacity: 0px;
+    background: #B81515;
+    color:#FFFFFF;    
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 32px;
+    text-align: center;
+    align-self: center;
+    margin-top: 32px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-bottom: 2px solid #B22222; /* Vermelho queimado */
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #333;
+  outline: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #aaa; /* Cor cinza claro para o placeholder */
+}
+
+textarea {
+    height: 100px;
+    resize: none; /* Evitar redimensionamento */
+  }
+
+.pre-footer {
+    background-image: url('./img/Imagem pré rodapé2.png');
+    width: 100%; /* Faz a imagem cobrir a largura total */
+    height: 600px;
+    background-size: cover; /* Ajusta a imagem para cobrir a section sem distorcer */
+    background-position: center; /* Centraliza a imagem */
+    z-index: 1; /* Garante que fique abaixo do conteúdo da main */
+}
+
+footer {
+    background: #000000;
+    display: flex;
+    flex-direction: row;
+    gap: 350px;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 auto; 
+    width: Fill (1,440px)px;
+    height: Fixed (232px)px;
+    padding: 32px 120px 32px 120px;
+}
+
+.infos-jornada {
+    padding-top: 32px;
+}
+
+.infos-jornada-logo {
+    width: 161.84px;
+    height: 40px;
+    gap: 0px;
+    opacity: 0px;
+}
+
+.infos-jornada-texto {
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 32px;
+    text-align: left;
+    color: #F5F5F5;
+
+}
+
+.redes-sociais {
+    display: flex;
+    flex-direction: column;
+}
