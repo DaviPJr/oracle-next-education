@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* NAV */
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 152px;
+    padding-left: 152px;
+}
+
+.nav-nome {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-nome-img {
+    height: 24px;
+}
+
+.nav-nome-p {
+    font-family: "Raleway", sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    color: #464646;
+}
+
+.nav-links{
+    display: flex;
+    gap: 32px;
+}
+
+.nav-links > a {
+    font-family: "Raleway", sans-serif;
+    text-decoration: none;
+    color: #464646;
+}
+
+/* HEADER */
+
+.header-content {
+    padding-right: 152px;
+    padding-left: 152px;
+    padding-top: 66px;
+    display: flex;
+}
+
+.header-content-info {
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    font-family: "Raleway", sans-serif;
+    font-weight: bold;
+    font-size: 52px;
+    color: #464646;
+}
+
+.header-content-info-p {
+    font-family: "Raleway", sans-serif;
+    font-size: 22px;
+    font-weight: 300;
+}
+
+.header-content-img {
+    height: 368px;
+    border-radius: 50%;
+}
+
+.header-content-links {
+    display: flex;
+    gap: 60px;
+    padding-top: 27px;
+}
+
+.header-content-links > a {
+    font-family: "Raleway", sans-serif;
+    font-size: 18px;
+    color: #464646;
+    text-decoration: none;
+}
+
+/* MAIN /*
+/* SOBRE MIM */
+
+.sobre-mim {
+    padding-right: 152px;
+    padding-left: 152px;
+    padding-bottom: 64px;
+    padding-top: 64px;
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    background-color: #DBD1B8;
+}
+
+h2 {
+    font-family: "Raleway", sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.sobre-mim-info {
+    width: 851px;
+}
+
+.sobre-mim-info > p {
+    font-family: "Raleway", sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+/* SKILLS/HOBBIES */
+
+.skills {
+    padding-right: 152px;
+    padding-left: 152px;
+    padding-top: 40px;
+    background-color: #EDEDED;
+}
+
+h3 {
+    font-family: "Raleway", sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.skills-cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.skills-cards > div {
+    width: 176px;
+    height: 174px;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-left: 10px;
+}
+
+.skills-cards > div > img {
+    height: 35px;
+    width: 35px;
+}
+
+.skills-cards > div > p {
+    font-family: "Raleway", sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* FORMAÇÃO ACADÊMICA */
+
+.formacao {
+    padding-right: 152px;
+    padding-left: 152px;
+    padding-top: 40px;
+    padding-bottom: 120px;
+    background-color: #EDEDED ;
+}
+
+.formacao-cards {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.formacao-cards > div {
+    width: 368px;
+    height: 347px;
+}
+
+.formacao-cards > div > h4 {
+    font-family: "Raleway", sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.formacao-cards > div > p {
+    font-family: "Raleway", sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.formacao-cards > div > div {
+    width: 368px;
+    height: 286px;
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+/* EXPERIÊNCIA PROFISSIONAL */
+
+.experiencia {
+    padding-right: 152px;
+    padding-left: 152px;
+    padding-top: 40px;
+}
+
+.card-1 {
+    display: flex;
+    gap: 26px;
+}
+
+
+
+
+
+
+
