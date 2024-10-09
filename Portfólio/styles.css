@@ -119,6 +119,7 @@ h2 {
     padding-right: 152px;
     padding-left: 152px;
     padding-top: 40px;
+    padding-bottom: 100px;
     background-color: #EDEDED;
 }
 
@@ -163,7 +164,7 @@ h3 {
     padding-left: 152px;
     padding-top: 40px;
     padding-bottom: 120px;
-    background-color: #EDEDED ;
+    background-color: #DBD1B8;;
 }
 
 .formacao-cards {
@@ -210,6 +211,55 @@ h3 {
 .card-1 {
     display: flex;
     gap: 26px;
+    align-items: center;
+}
+
+.card-1-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.card-1-info > * {
+    margin: 8px 0;
+}
+
+.card-1-info > p {
+    font-family: "Raleway", sans-serif;
+}
+
+.card-1-info-p {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.card-1-info-but {
+    display: flex;
+    gap: 16px;
+}
+
+.but-1 {
+    width: 116px;
+    height: 51px;
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    background-color: #FFFFFF;
+    border-color: #DBB484;
+    color: #DBB484;
+    cursor: pointer;
+}
+
+.but-2 {
+    width: 116px;
+    height: 51px;
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    background-color: #DBB484;
+    color: #FFFFFF;
+    border-color: #DBD1B8;
+    cursor: pointer;
 }
 
 
