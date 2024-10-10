@@ -164,7 +164,7 @@ h3 {
     padding-left: 152px;
     padding-top: 40px;
     padding-bottom: 120px;
-    background-color: #DBD1B8;;
+    background-color: #DBD1B8;
 }
 
 .formacao-cards {
@@ -206,12 +206,23 @@ h3 {
     padding-right: 152px;
     padding-left: 152px;
     padding-top: 40px;
+    padding-bottom: 52px;
+    background-color: #EDEDED;
+
 }
 
 .card-1 {
     display: flex;
     gap: 26px;
     align-items: center;
+    padding-top: 20px;
+}
+
+.card-1-img {
+    width: 752px;
+    height: 427px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
 }
 
 .card-1-info {
@@ -262,6 +273,163 @@ h3 {
     cursor: pointer;
 }
 
+.but-1:hover {
+    border-color: #c7a16a; 
+    transform: scale(1.05); 
+}
+
+.but-2:hover {
+    background-color: #c7a16a; 
+    border-color: #c7a16a; 
+    transform: scale(1.05); 
+}
+
+.card-2 {
+    display: flex;
+    gap: 26px;
+    align-items: center;
+    padding-top: 54px;
+}
+
+.card-3 {
+    display: flex;
+    gap: 26px;
+    align-items: center;
+    padding-top: 54px;
+}
+
+.card-4 {
+    display: flex;
+    gap: 26px;
+    align-items: center;
+    padding-top: 54px;
+}
+
+.card-5 {
+    display: flex;
+    gap: 26px;
+    align-items: center;
+    padding-top: 54px;
+}
+
+/* CONTATO */
+
+.contato {
+    display: flex;
+    padding-right: 152px;
+    padding-left: 152px;
+    padding-top: 130px;
+    padding-bottom: 64px;
+    align-items: stretch;
+    justify-content: center;
+    
+}
+
+.contato-img {
+    width: 464px;
+    height: auto;
+}
+
+.contato-info {
+    display: flex;
+    flex-direction: column;
+    padding-left: 16px;
+    justify-content: space-between;
+    height: auto;
+}
+
+.contato-info-titulo {
+    font-family: "Raleway", sans-serif;
+    font-weight: bold;
+    font-size: 32px;
+}
+
+.contato-info-p {
+    font-family: "Raleway", sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+input {
+    width: 656px;
+    height: 56px;
+    border: 2px solid #ccc;
+    font-family: "Raleway", sans-serif;
+}
+
+textarea {
+    width: 656px;
+    height: 133px;
+    font-family: "Raleway", sans-serif;
+}
+
+input:focus, textarea:focus {
+    border-color: #DBB484; 
+    outline: none; 
+}
+
+input::placeholder, textarea::placeholder {
+    font-family: "Raleway", sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+}
+
+input:focus::placeholder, textarea:focus::placeholder {
+    color: #DBB484;
+}
+
+.btn-3 {
+    width: 165px;
+    height: 51px;
+    font-family: "Raleway", sans-serif;
+    font-size: 16px;
+    font-size: medium;
+    background-color: #DBB484;
+    color: #FFFFFF;
+    border-color: #DBB484;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-3:hover {
+    background-color: #c7a16a; 
+    border-color: #c7a16a; 
+    transform: scale(1.05); 
+}
+
+/* FOOTER */ 
+
+
+footer {
+    display: flex;
+    flex-direction: column;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    background-color: #DBD1B8;
+
+}
+
+footer > p {
+    text-align: center;
+    font-family: "Raleway", sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+
+/* Media Query para mobile (360px até 768px) */
+@media (min-width: 360px) and (max-width: 768px) {
+    
+  
+}
 
 
 
