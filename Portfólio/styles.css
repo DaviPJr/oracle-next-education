@@ -257,9 +257,8 @@ h3 {
     font-weight: 500;
     font-size: 16px;
     background-color: #FFFFFF;
-    border-color: #DBB484;
+    border: 2px solid #DBB484;
     color: #DBB484;
-    cursor: pointer;
 }
 
 .but-2 {
@@ -270,8 +269,16 @@ h3 {
     font-size: 16px;
     background-color: #DBB484;
     color: #FFFFFF;
-    border-color: #DBD1B8;
-    cursor: pointer;
+    border: 2px solid #DBD1B8;
+}
+
+.but-1, .but-2 {
+    display: inline-block; 
+    text-align: center;   
+    padding: 14px 0;       
+    text-decoration: none; 
+    border-radius: 4px;   
+    cursor: pointer;       
 }
 
 .but-1:hover {
