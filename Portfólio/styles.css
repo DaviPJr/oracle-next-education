@@ -176,6 +176,7 @@ h3 {
 .formacao-cards > div {
     width: 368px;
     height: 347px;
+    
 }
 
 .formacao-cards > div > h4 {
@@ -208,13 +209,13 @@ h3 {
     padding-top: 40px;
     padding-bottom: 52px;
     background-color: #EDEDED;
-
 }
 
 .card-1 {
     display: flex;
     gap: 26px;
     align-items: center;
+    justify-content: space-around;
     padding-top: 20px;
 }
 
@@ -288,6 +289,7 @@ h3 {
     display: flex;
     gap: 26px;
     align-items: center;
+    justify-content: space-around;
     padding-top: 54px;
 }
 
@@ -295,6 +297,7 @@ h3 {
     display: flex;
     gap: 26px;
     align-items: center;
+    justify-content: space-around;
     padding-top: 54px;
 }
 
@@ -302,6 +305,7 @@ h3 {
     display: flex;
     gap: 26px;
     align-items: center;
+    justify-content: space-around;
     padding-top: 54px;
 }
 
@@ -309,6 +313,7 @@ h3 {
     display: flex;
     gap: 26px;
     align-items: center;
+    justify-content: space-around;
     padding-top: 54px;
 }
 
@@ -424,15 +429,264 @@ footer > p {
     font-weight: bold;
 }
 
-
-/* Media Query para mobile (360px até 768px) */
-@media (min-width: 360px) and (max-width: 768px) {
-    
-  
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Raleway", sans-serif;
+}
 
+/* Media Query para responsividade */ 
+@media (min-width: 360px) and (max-width: 1024px) {
+    nav {
+        padding-right: 16px;
+        padding-left: 16px;
+        display: flex;
+        gap: 3px;
+    }
 
+    .nav-links a {
+        display: none; /* Oculta todos os links */
+    }
+    
+    .nav-links a:last-child {
+        display: inline; /* Exibe apenas o último link */
+    }
 
+    .header-content {
+        flex-direction: column-reverse;
+        align-items: center;
+        padding-right: 8px;
+        padding-left: 8px;
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden; /* Evita overflow horizontal */
+    }
 
+    .header-content-info {
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        max-width: 100%;
+    }
 
+    .header-content-img {
+        height: 120px;
+        width: 120px;
+        max-width: 100%;
+    }
+
+    .header-content-links {
+        display: flex;
+        gap: 10px;
+    }
+
+    .header-content-links > a {
+        font-weight: 700;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    .sobre-mim {
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        text-align: justify;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .sobre-mim h2 {
+        font-size: 20px;
+        margin-bottom: 8px;
+    }
+
+    .sobre-mim-info {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .sobre-mim-info p {
+        font-size: 10px;
+        line-height: 1.4;
+        margin-bottom: 8px;
+    }
+
+    .skills {
+        padding-right: 8px;
+        padding-left: 8px;
+    }
+
+    .skills-cards {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .skills-cards > div {
+        width: 40%; /* Cada div ocupa aproximadamente metade da largura do contêiner */
+        max-width: 480;
+        align-items: center;
+        box-sizing: border-box; /* Inclui padding e border no cálculo da largura */
+        margin-bottom: 10px; /* Espaçamento entre as linhas */
+        border-radius: 10px;
+    }
+
+    .formacao {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .formacao-cards {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .formacao-cards > div {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .formacao-cards > div > div {
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    .experiencia {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .card-1 {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .card-1-img {
+        width: 100%;
+        height: auto;
+    }
+
+    .card-1-info {
+        align-items: center;
+        text-align: center;
+    }
+
+    .card-1-info > * {
+        margin: 4px 0;
+    }
+
+    .card-1-info-p {
+        font-size: 16px;
+    }
+
+    .card-1-info-but {
+        display: flex;
+        gap: 8px;
+    }
+
+    .but-1 {
+        width: 100px;
+        height: 41px;
+        font-size: 14px;
+    } 
+
+    .but-2 {
+        width: 100px;
+        height: 41px;
+        font-size: 14px;
+    }
+
+    .card-2 {
+        flex-direction: column-reverse;
+        gap: 10px;
+    }
+
+    .card-3 {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .card-3 > img {
+        width: 100%;
+        height: auto;
+    }
+
+    .card-4 {
+        flex-direction: column-reverse;
+        gap: 10px;
+    }
+
+    .card-5 {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .contato {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .contato-img {
+        display: none;
+    }
+
+    .contato-info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contato-info-titulo {
+        font-size: 40px;
+        margin-bottom: 20px;
+        padding: 0 10px;
+    }
+
+    .contato-info-p {
+        font-size: 20px;
+        margin-bottom: 20px;
+        padding: 0px;
+    }
+
+    form {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    input {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    textarea {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .btn-3 {
+        width: 100%;
+        max-width: 100%;
+    }
+}
