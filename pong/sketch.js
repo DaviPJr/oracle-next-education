@@ -2,9 +2,13 @@ let playerY, compY, ballX, ballY, ballSpeedX, ballSpeedY;
 let paddleHeight = 100;
 let paddleWidth = 10;
 let ballSize = 20;
-let compSpeed = 4; // Velocidade da raquete do computador
+let compSpeed = 5; // Velocidade da raquete do computador
 let barHeight = 15; // Altura das barras superior e inferior
 let speedIncreaseRate = 1.1; // Taxa de aumento de 10%
+
+function preload() {
+  fundoImg = loadImage('./assets/Sprites/fundo1.png');
+}
 
 function setup() {
   createCanvas(800, 400);
@@ -14,10 +18,9 @@ function setup() {
 }
 
 function draw() {
-  background(0);
-
+  image(fundoImg, 0, 0, width, height);
   // Desenha as barras horizontais (superior e inferior)
-  fill(255);
+  fill(color("#2B3FD6")); 
   rect(0, 0, width, barHeight); // Barra superior
   rect(0, height - barHeight, width, barHeight); // Barra inferior
 
