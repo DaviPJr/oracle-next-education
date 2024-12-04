@@ -3,16 +3,21 @@ import CampoDeTexto from "../CampoDeTexto/CampoDeTexto";
 import ListaSuspensa from "../ListaSuspensa/ListaSuspensa";
 import Botao from "../Botao/Botao";
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 const Formulario = (props) => {
   const aoSalvar = (e) => {
     e.preventDefault();
-    console.log(`Form foi submetido, ${nome}, ${cargo}, ${imagem}, ${time}`);
+    const id = uuidv4();
+    console.log(
+      `Form foi submetido, ${nome}, ${cargo}, ${imagem}, ${time} ${id}`
+    );
     props.aoColaboradorCadastrado({
       nome,
       cargo,
       imagem,
       time,
+      id,
     });
     setNome("");
     setCargo("");
@@ -23,6 +28,7 @@ const Formulario = (props) => {
   const [cargo, setCargo] = useState("");
   const [imagem, setImagem] = useState("");
   const [time, setTime] = useState("");
+
   return (
     <section className="formulario">
       <form onSubmit={aoSalvar}>
