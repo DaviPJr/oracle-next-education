@@ -68,10 +68,26 @@ function App() {
     );
   };
 
+  const cadastrarTime = (novoTime) => {
+    setTimes([...times, { ...novoTime, id: uuidv4() }]);
+  };
+
+  const resolverFavorito = (id) => {
+    setColaboradores(
+      colaboradores.map((colaborador) => {
+        if (colaborador.id === id) {
+          colaborador.favorito = !colaborador.favorito;
+        }
+        return colaborador;
+      })
+    );
+  };
+
   return (
     <div>
       <Banner />
       <Formulario
+        cadastrarTime={cadastrarTime}
         time={times.map((time) => {
           return time.nome;
         })}
@@ -91,6 +107,7 @@ function App() {
               (colaborador) => colaborador.time === time.nome
             )}
             aoDeletar={aoDeletarColaborador}
+            aoFavoritar={resolverFavorito}
           />
         );
       })}

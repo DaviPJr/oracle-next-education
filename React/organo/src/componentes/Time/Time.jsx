@@ -27,6 +27,7 @@ const Time = (props) => {
               imagem={colaborador.imagem}
               id={colaborador.id}
               aoDeletar={props.aoDeletar}
+              aoFavoritar={props.aoFavoritar}
             />
           ))}
         </div>
