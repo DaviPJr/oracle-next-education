@@ -6,10 +6,12 @@ import Rodape from "./componentes/Rodape/index.jsx";
 import PaginaPadrao from "./componentes/PaginaPadrao/index.jsx";
 import Post from "./paginas/post/index.jsx";
 import NaoEncontrada from "./paginas/naoEncontrada/index.jsx";
+import ScrollToTop from "./componentes/ScrollToTop/index.jsx";
 
 function AppRoutes() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Nav />
       <Routes>
         <Route path="/" element={<PaginaPadrao />}>
