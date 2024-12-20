@@ -27,12 +27,21 @@ const TagButton = styled.button`
   }
 `;
 
-const Tags = () => {
+const Tags = ({ aoSelecionarTag, limparFiltro }) => {
   return (
     <TagContainer>
       <TagTitle>Busque por tags:</TagTitle>
       {tags.map((tag) => (
-        <TagButton key={tag.id}>{tag.titulo}</TagButton>
+        <TagButton
+          onClick={
+            tag.titulo === "Todas"
+              ? () => limparFiltro()
+              : () => aoSelecionarTag(tag)
+          }
+          key={tag.id}
+        >
+          {tag.titulo}
+        </TagButton>
       ))}
     </TagContainer>
   );

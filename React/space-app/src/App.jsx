@@ -7,8 +7,10 @@ import BarraLateral from "./componentes/BarraLateral/index.jsx";
 import Banner from "./componentes/Banner/index.jsx";
 import Galeria from "./componentes/Galeria/index.jsx";
 import ModalZoom from "./componentes/ModalZoom/index.jsx";
+import Footer from "./componentes/Footer/index.jsx";
 
 import fotos from "./fotos.json";
+import tags from "./componentes/Galeria/Tags/tags.json";
 
 const AppContainer = styled.div`
   width: 1440px;
@@ -41,21 +43,75 @@ const ConteudoGaleria = styled.section`
 
 const App = () => {
   const [fotosDaGaleria, setFotosDaGaleria] = useState(fotos);
+  const [fotoSelecionada, setFotoSelecionada] = useState(null);
+  const [tagSelecionada, setTagSelecionada] = useState(null);
+  const [textoBusca, setTextoBusca] = useState("");
+
+  const aoAlternarFavorito = (foto) => {
+    if (foto.id === fotoSelecionada?.id) {
+      setFotoSelecionada({
+        ...fotoSelecionada,
+        favorita: !fotoSelecionada.favorita,
+      });
+    }
+    setFotosDaGaleria(
+      fotosDaGaleria.map((fotoDaGaleria) => {
+        return {
+          ...fotoDaGaleria,
+          favorita:
+            fotoDaGaleria.id === foto.id
+              ? !foto.favorita
+              : fotoDaGaleria.favorita,
+        };
+      })
+    );
+  };
+
+  const aoSelecionarTag = (tag) => {
+    setTagSelecionada(tag);
+  };
+
+  const fotosFiltradas = fotosDaGaleria.filter((foto) => {
+    if (textoBusca) {
+      return tags.some(
+        (tag) =>
+          tag.id === foto.tagId &&
+          tag.titulo.toLowerCase().includes(textoBusca.toLowerCase())
+      );
+    }
+    return tagSelecionada ? foto.tagId === tagSelecionada.id : true;
+  });
+
+  const limparFiltro = () => {
+    setTagSelecionada(null);
+  };
 
   return (
     <FundoGradiente>
       <EstilosGlobais />
       <AppContainer>
-        <Cabecalho />
+        <Cabecalho onBusca={(texto) => setTextoBusca(texto)} />
         <LayoutPrincipal>
           <BarraLateral />
           <ConteudoGaleria>
             <Banner />
-            <Galeria fotos={fotosDaGaleria} />
+            <Galeria
+              aoFotoSelecionada={(foto) => setFotoSelecionada(foto)}
+              fotos={fotosFiltradas}
+              fotoExpandida={fotoSelecionada}
+              aoAlternarFavorito={aoAlternarFavorito}
+              aoSelecionarTag={aoSelecionarTag}
+              limparFiltro={limparFiltro}
+            />
           </ConteudoGaleria>
         </LayoutPrincipal>
       </AppContainer>
-      <ModalZoom />
+      <Footer />
+      <ModalZoom
+        foto={fotoSelecionada}
+        fecharClick={() => setFotoSelecionada(null)}
+        aoAlternarFavorito={aoAlternarFavorito}
+      />
     </FundoGradiente>
   );
 };

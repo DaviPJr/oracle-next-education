@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 import expandir from "/icones/expandir.png";
 import favorito from "/icones/favorito.png";
+import favoritoAtivo from "/icones/favorito-ativo.png";
 
 const ImagemEstilizada = styled.figure`
   border-radius: 20px;
@@ -62,22 +63,31 @@ const DivBotao = styled.div`
   gap: 12px;
 `;
 
-const Imagem = ({ titulo, fonte, path }) => {
+const Imagem = ({
+  foto,
+  aoZoomSolicitado,
+  expansao = true,
+  aoAlternarFavorito,
+}) => {
+  const iconeFavorito = foto.favorita ? favoritoAtivo : favorito;
+
   return (
     <>
       <ImagemEstilizada>
-        <Foto src={path} alt="" />
+        <Foto src={foto.path} alt="" />
         <FigCaption>
-          <FigTitulo>{titulo}</FigTitulo>
+          <FigTitulo>{foto.titulo}</FigTitulo>
           <FigFooter>
-            <FigFonte>{fonte}</FigFonte>
+            <FigFonte>{foto.fonte}</FigFonte>
             <DivBotao>
-              <FigBotao>
-                <img src={favorito} alt="Favorito" />
+              <FigBotao onClick={() => aoAlternarFavorito(foto)}>
+                <img src={iconeFavorito} alt="Favorito" />
               </FigBotao>
-              <FigBotao>
-                <img src={expandir} alt="Expandir" />
-              </FigBotao>
+              {!expansao && (
+                <FigBotao onClick={() => aoZoomSolicitado(foto)}>
+                  <img src={expandir} alt="Expandir" />
+                </FigBotao>
+              )}
             </DivBotao>
           </FigFooter>
         </FigCaption>

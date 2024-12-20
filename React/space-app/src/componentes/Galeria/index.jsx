@@ -20,10 +20,17 @@ const SecaoFotos = styled.div`
   gap: 24px;
 `;
 
-const Galeria = ({ fotos = [] }) => {
+const Galeria = ({
+  fotos = [],
+  aoFotoSelecionada,
+  fotoExpandida,
+  aoAlternarFavorito,
+  aoSelecionarTag,
+  limparFiltro,
+}) => {
   return (
     <>
-      <Tags />
+      <Tags aoSelecionarTag={aoSelecionarTag} limparFiltro={limparFiltro} />
       <GaleriaContainer>
         <SecaoFluida>
           <Titulo>Navegue pela galeria</Titulo>
@@ -31,9 +38,10 @@ const Galeria = ({ fotos = [] }) => {
             {fotos.map((foto) => (
               <Imagem
                 key={foto.id}
-                titulo={foto.titulo}
-                fonte={foto.fonte}
-                path={foto.path}
+                foto={foto}
+                aoZoomSolicitado={aoFotoSelecionada}
+                expansao={fotoExpandida === foto.id}
+                aoAlternarFavorito={aoAlternarFavorito}
               />
             ))}
           </SecaoFotos>
