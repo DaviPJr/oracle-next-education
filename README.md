@@ -63,7 +63,7 @@ Contribuições são bem-vindas! Caso queira sugerir melhorias ou colaborar com 
 ## 📧 Contato
 
 - **GitHub**: [DaviPJr](https://github.com/DaviPJr)
-- **LinkedIn**: [Davi Pereira](https://www.linkedin.com/in/davi-pereira/)
+- **LinkedIn**: [Davi Pereira](https://www.linkedin.com/in/davi-pereira-913034277/)
 
 ---
 
