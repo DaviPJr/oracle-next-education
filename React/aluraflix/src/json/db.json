@@ -1,0 +1,76 @@
+{
+  "categorias": [
+    {
+      "nome": "FRONT END",
+      "cor": "#6BD1FF",
+      "videos": [
+        {
+          "id": 1,
+          "titulo": "O que faz uma desenvolvedora front-end? ",
+          "capa": "https://img.youtube.com/vi/ZY3-MFxVdEw/hqdefault.jpg",
+          "link": "https://www.youtube.com/embed/ZY3-MFxVdEw?si=euolEJJo7lLDIAsV"
+        },
+        {
+          "id": 2,
+          "titulo": "Guia de carreira Front-end",
+          "capa": "https://img.youtube.com/vi/fpth65ts3cw/sddefault.jpg",
+          "link": "https://www.youtube.com/embed/fpth65ts3cw?si=MNmwNF_HxLyBcakL"
+        },
+        {
+          "id": 3,
+          "titulo": "Métricas para o Front End com Mario Souto",
+          "capa": "https://img.youtube.com/vi/iVNR-6v8lZU/sddefault.jpg",
+          "link": "https://www.youtube.com/embed/iVNR-6v8lZU?si=m8qKphw26wzV6vNd"
+        }
+      ]
+    },
+    {
+      "nome": "BACK END",
+      "cor": "#00C86F",
+      "videos": [
+        {
+          "id": 4,
+          "titulo": "O que faz uma desenvolvedora Back-end? com Juliana Amoasei",
+          "capa": "https://img.youtube.com/vi/fiPfvylj6rk/sddefault.jpg",
+          "link": "https://www.youtube.com/embed/fiPfvylj6rk?si=HI3x0KiYSyaISHwB"
+        },
+        {
+          "id": 5,
+          "titulo": "PORTFÓLIO BACK-END JAVASCRIPT/NODE.JS: como fazer | Hipsters: Portfólio Dev",
+          "capa": "https://img.youtube.com/vi/YVs-BXViC7o/sddefault.jpg",
+          "link": "https://www.youtube.com/embed/YVs-BXViC7o?si=Dwo0lH9pZM7M0afS"
+        },
+        {
+          "id": 6,
+          "titulo": "Guia de Carreira PYTHON ",
+          "capa": "https://img.youtube.com/vi/IQjd272BLnw/sddefault.jpg",
+          "link": "https://www.youtube.com/embed/IQjd272BLnw?si=r1ZGfxeVTU4EDCgs"
+        }
+      ]
+    },
+    {
+      "nome": "MOBILE",
+      "cor": "#FFBA05",
+      "videos": [
+        {
+          "id": 7,
+          "titulo": "Desenvolvimento Android",
+          "capa": "https://img.youtube.com/vi/fWscDFHKgw8/sddefault.jpg",
+          "link": "https://www.youtube.com/embed/fWscDFHKgw8?si=KWuFmw7VMuWZc0QL"
+        },
+        {
+          "id": 8,
+          "titulo": "Desmistificando Mobile- Por onde eu começo? #01",
+          "capa": "https://img.youtube.com/vi/2z6f8VN_Pro/sddefault.jpg",
+          "link": "https://www.youtube.com/embed/2z6f8VN_Pro?si=2EvTzc68MAfcCgLm"
+        },
+        {
+          "id": 9,
+          "titulo": "Desenvolvimento iOS pra iniciantes com Giovanna Moeller",
+          "capa": "https://img.youtube.com/vi/MGIs7DSQ-0A/sddefault.jpg",
+          "link": "https://www.youtube.com/embed/MGIs7DSQ-0A?si=Vcmg0dy3Je5ICtw9"
+        }
+      ]
+    }
+  ]
+}
