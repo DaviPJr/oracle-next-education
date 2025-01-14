@@ -34,14 +34,15 @@ const CategoriaTitulo = styled.p`
   font-weight: 600;
 `;
 
-const Select = () => {
+// eslint-disable-next-line react/prop-types
+const Select = ({ value, onChange }) => {
   return (
     <>
       <CategoriaTitulo>Categoria</CategoriaTitulo>
-      <Categoria>
-        <option value="front-end">FRONT END</option>
-        <option value="back-end">BACK END</option>
-        <option value="mobile">MOBILE</option>
+      <Categoria value={value} onChange={onChange}>
+        <option value="FRONT END">FRONT END</option>
+        <option value="BACK END">BACK END</option>
+        <option value="MOBILE">MOBILE</option>
       </Categoria>
     </>
   );

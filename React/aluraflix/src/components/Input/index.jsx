@@ -33,11 +33,15 @@ const InputContainer = styled.div`
 `;
 
 // eslint-disable-next-line react/prop-types
-const Input = ({ children, placeholder }) => {
+const Input = ({ children, placeholder, value, onChange }) => {
   return (
     <InputContainer>
       <TituloInput>{children}</TituloInput>
-      <InputEstilizado placeholder={placeholder} />
+      <InputEstilizado
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+      />
     </InputContainer>
   );
 };

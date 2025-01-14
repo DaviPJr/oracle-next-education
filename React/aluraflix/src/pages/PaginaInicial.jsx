@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 import Titulo from "../components/Titulo";
-import { categorias } from "../json/db.json";
 import Card from "../components/Card";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "../components/Modal";
+import { getData } from "../services/api";
 
 const Overlay = styled.div`
   display: ${(props) => (props.isOpen ? "block" : "none")};
@@ -19,9 +19,23 @@ const Overlay = styled.div`
 
 function PaginaInicial() {
   const [isModalOpen, setModalOpen] = useState(false);
+  const [categorias, setCategorias] = useState([]);
 
   const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const categoriasDados = await getData();
+        setCategorias(categoriasDados);
+      } catch (error) {
+        console.error("Erro ao buscar dados da API", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <>

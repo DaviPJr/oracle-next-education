@@ -1,8 +1,14 @@
 import styled from "styled-components";
+import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+import axios from "axios";
+
 import Input from "../components/Input";
 import Select from "../components/Select";
 import TextArea from "../components/TextArea";
 import Botao from "../components/Botao";
+
+import { getData, postData } from "../services/api";
 
 const Main = styled.main``;
 
@@ -60,6 +66,70 @@ const DescricaoContainer = styled.div`
 `;
 
 const NovoVideo = () => {
+  const [titulo, setTitulo] = useState("");
+  const [imagem, setImagem] = useState("");
+  const [link, setLink] = useState("");
+  const [descricao, setDescricao] = useState("");
+  const [categoria, setCategoria] = useState("");
+
+  const handlePost = async (e) => {
+    e.preventDefault();
+
+    if (
+      !titulo.trim() ||
+      !imagem.trim() ||
+      !link.trim() ||
+      !categoria.trim() ||
+      !descricao.trim()
+    ) {
+      console.log({ titulo, imagem, link, categoria, descricao });
+      alert("Favor preencher os campos necessários");
+      return;
+    }
+
+    const novoVideo = {
+      id: uuidv4(),
+      titulo,
+      capa: imagem,
+      link,
+      descricao,
+    };
+
+    try {
+      const categorias = await getData();
+      const categoriaExistente = categorias.find(
+        (cat) => cat.nome === categoria
+      );
+
+      if (categoriaExistente) {
+        const categoriaAtualizada = {
+          ...categoriaExistente,
+          videos: [...categoriaExistente.videos, novoVideo],
+        };
+
+        await axios.put(
+          `http://localhost:3000/categorias/${categoriaExistente.id}`,
+          categoriaAtualizada
+        );
+        console.log("Vídeo adicionado à categoria existente");
+      } else {
+        const response = await postData({
+          nome: categoria,
+          videos: [novoVideo],
+          id: uuidv4(),
+        });
+        console.log("Novo vídeo adicionado", response);
+        setTitulo("");
+        setImagem("");
+        setLink("");
+        setDescricao("");
+        setCategoria("");
+      }
+    } catch (error) {
+      console.error("Erro ao adicionar vídeo", error);
+    }
+  };
+
   return (
     <Main>
       <TituloContainer>
@@ -69,19 +139,44 @@ const NovoVideo = () => {
         </MainSubtitulo>
       </TituloContainer>
       <MainCriarCard>Criar Card</MainCriarCard>
-      <MainForm>
+      <MainForm onSubmit={handlePost}>
         <FormContainer>
-          <Input placeholder="Insira o título">Título</Input>
+          <Input
+            placeholder="Insira o título"
+            value={titulo}
+            onChange={(e) => setTitulo(e.target.value)}
+          >
+            Título
+          </Input>
           <div>
-            <Select />
+            <Select
+              value={categoria}
+              onChange={(e) => setCategoria(e.target.value)}
+            />
           </div>
-          <Input placeholder="Insira a imagem">Imagem</Input>
-          <Input placeholder="Insira o link do vídeo">Vídeo</Input>
+          <Input
+            value={imagem}
+            onChange={(e) => setImagem(e.target.value)}
+            placeholder="Insira a imagem"
+          >
+            Imagem
+          </Input>
+          <Input
+            value={link}
+            onChange={(e) => setLink(e.target.value)}
+            placeholder="Insira o link do vídeo"
+          >
+            Vídeo
+          </Input>
         </FormContainer>
         <DescricaoContainer>
-          <TextArea />
+          <TextArea
+            value={descricao}
+            onChange={(e) => setDescricao(e.target.value)}
+          />
           <BotoesContainer>
-            <Botao />
+            <Botao type="submit">SALVAR</Botao>
+            <Botao type="reset">LIMPAR</Botao>
           </BotoesContainer>
         </DescricaoContainer>
       </MainForm>

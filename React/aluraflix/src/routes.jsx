@@ -6,7 +6,8 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Banner from "./components/Banner";
 
-import { categorias } from "./json/db.json";
+import { getData } from "./services/api";
+import { useEffect, useState } from "react";
 
 const FundoColorido = styled.div`
   background-color: #262626;
@@ -22,6 +23,20 @@ const AppContainer = styled.div`
 
 function AppRoutes() {
   const location = useLocation();
+  const [categorias, setCategorias] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const categoriasDados = await getData();
+        setCategorias(categoriasDados);
+      } catch (error) {
+        console.error("Erro ao buscar dados da API", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <FundoColorido>

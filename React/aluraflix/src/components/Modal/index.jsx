@@ -73,7 +73,8 @@ const Modal = ({ isOpen, closeModal }) => {
           <TextAreaContainer>
             <TextArea />
             <BotoesContainer>
-              <Botao />
+              <Botao type="submit">SALVAR</Botao>
+              <Botao type="reset">LIMPAR</Botao>
             </BotoesContainer>
           </TextAreaContainer>
         </ContainerModal>

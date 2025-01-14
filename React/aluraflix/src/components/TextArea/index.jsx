@@ -24,11 +24,16 @@ const DescricaoTitulo = styled.p`
   margin-top: 40px;
 `;
 
-const TextArea = () => {
+// eslint-disable-next-line react/prop-types
+const TextArea = ({ value, onChange }) => {
   return (
     <>
       <DescricaoTitulo>Descrição</DescricaoTitulo>
-      <Descricao placeholder="Sobre o que é esse vídeo?" />
+      <Descricao
+        value={value}
+        onChange={onChange}
+        placeholder="Sobre o que é esse vídeo?"
+      />
     </>
   );
 };

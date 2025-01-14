@@ -21,8 +21,16 @@
           "titulo": "Métricas para o Front End com Mario Souto",
           "capa": "https://img.youtube.com/vi/iVNR-6v8lZU/sddefault.jpg",
           "link": "https://www.youtube.com/embed/iVNR-6v8lZU?si=m8qKphw26wzV6vNd"
+        },
+        {
+          "id": "0ff402e2-ef24-445b-8b1c-edad41b9fe79",
+          "titulo": "SILVIO SANTOS E KUZCO JOGAM LOL",
+          "capa": "https://img.youtube.com/vi/Xqc5B9eTN5U/maxresdefault.jpg",
+          "link": "https://www.youtube.com/embed/Xqc5B9eTN5U?si=WyjVomlaCVI9Vqw7",
+          "descricao": "teste"
         }
-      ]
+      ],
+      "id": "e2d9"
     },
     {
       "nome": "BACK END",
@@ -46,7 +54,8 @@
           "capa": "https://img.youtube.com/vi/IQjd272BLnw/sddefault.jpg",
           "link": "https://www.youtube.com/embed/IQjd272BLnw?si=r1ZGfxeVTU4EDCgs"
         }
-      ]
+      ],
+      "id": "4947"
     },
     {
       "nome": "MOBILE",
@@ -69,6 +78,33 @@
           "titulo": "Desenvolvimento iOS pra iniciantes com Giovanna Moeller",
           "capa": "https://img.youtube.com/vi/MGIs7DSQ-0A/sddefault.jpg",
           "link": "https://www.youtube.com/embed/MGIs7DSQ-0A?si=Vcmg0dy3Je5ICtw9"
+        }
+      ],
+      "id": "bfc8"
+    },
+    {
+      "id": "d276f659-cfca-48c4-b0a4-5884effc609b",
+      "nome": "front-end",
+      "videos": [
+        {
+          "id": "5f221957-1cc5-4ed1-8183-b6abfdb20f34",
+          "titulo": "dasdsadsad",
+          "capa": "https://img.youtube.com/vi/xEM3mBMhfys/maxresdefault.jpg",
+          "link": "https://www.youtube.com/embed/xEM3mBMhfys?si=oyEzAwzf5YeHg33C",
+          "descricao": "dassdasads"
+        }
+      ]
+    },
+    {
+      "id": "7773e67d-979d-438d-9663-9052d0ba5d5d",
+      "nome": "FRONT END",
+      "videos": [
+        {
+          "id": "2e4204d6-37ad-40a1-9d7a-0c72f0949168",
+          "titulo": " SILVIO SANTOS E KUZCO JOGAM LOL",
+          "capa": "https://img.youtube.com/vi/Xqc5B9eTN5U/maxresdefault.jpg",
+          "link": "https://www.youtube.com/embed/Xqc5B9eTN5U?si=WyjVomlaCVI9Vqw7",
+          "descricao": "TESTE"
         }
       ]
     }

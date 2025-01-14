@@ -71,7 +71,19 @@ const CapaEstilizada = styled.div`
 const Banner = ({ categorias }) => {
   const [videoIndex, setVideoIndex] = useState(0);
 
+  if (!categorias || categorias.length === 0) {
+    return <div>Carregando...</div>;
+  }
+
   const categoriaAtual = categorias[videoIndex];
+
+  if (
+    !categoriaAtual ||
+    !categoriaAtual.videos ||
+    categoriaAtual.videos.length === 0
+  ) {
+    return <div>Sem vídeos disponíveis</div>;
+  }
 
   const videoAtual = categoriaAtual.videos[0];
 

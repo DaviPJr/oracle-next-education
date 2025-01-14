@@ -16,13 +16,9 @@ const FormBotao = styled.button`
   }
 `;
 
-const Botao = () => {
-  return (
-    <>
-      <FormBotao>SALVAR</FormBotao>
-      <FormBotao>LIMPAR</FormBotao>
-    </>
-  );
+// eslint-disable-next-line react/prop-types
+const Botao = ({ type, children }) => {
+  return <FormBotao type={type}>{children}</FormBotao>;
 };
 
 export default Botao;
