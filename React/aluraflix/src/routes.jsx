@@ -6,7 +6,8 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Banner from "./components/Banner";
 
-import { getData } from "./services/api";
+import { getCategoryData, getVideoData } from "./services/api";
+
 import { useEffect, useState } from "react";
 
 const FundoColorido = styled.div`
@@ -24,12 +25,15 @@ const AppContainer = styled.div`
 function AppRoutes() {
   const location = useLocation();
   const [categorias, setCategorias] = useState([]);
+  const [videos, setVideos] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const categoriasDados = await getData();
+        const categoriasDados = await getCategoryData();
+        const videosDados = await getVideoData();
         setCategorias(categoriasDados);
+        setVideos(videosDados);
       } catch (error) {
         console.error("Erro ao buscar dados da API", error);
       }
@@ -41,7 +45,9 @@ function AppRoutes() {
   return (
     <FundoColorido>
       <Header />
-      {location.pathname === "/" && <Banner categorias={categorias} />}
+      {location.pathname === "/" && (
+        <Banner videos={videos} categorias={categorias} />
+      )}
       <AppContainer>
         <Routes>
           <Route path="/" element={<PaginaInicial />} />

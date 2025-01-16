@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const BannerEstilizado = styled.section`
@@ -68,39 +68,41 @@ const CapaEstilizada = styled.div`
   }
 `;
 
-const Banner = ({ categorias }) => {
+const Banner = ({ categorias, videos }) => {
   const [videoIndex, setVideoIndex] = useState(0);
+  const [videoAtual, setVideoAtual] = useState(videos);
 
-  if (!categorias || categorias.length === 0) {
+  useEffect(() => {
+    if (categorias.length > 0 && videos.length > 0) {
+      const categoriaAtual = categorias[videoIndex];
+      const videoFiltrado = videos.find(
+        (video) => video.categoriaId === categoriaAtual.id
+      );
+      setVideoAtual(videoFiltrado || null);
+    }
+  }, [videoIndex, categorias, videos]);
+
+  if (
+    !categorias ||
+    categorias.length === 0 ||
+    !videos ||
+    videos.length === 0
+  ) {
     return <div>Carregando...</div>;
   }
 
   const categoriaAtual = categorias[videoIndex];
 
-  if (
-    !categoriaAtual ||
-    !categoriaAtual.videos ||
-    categoriaAtual.videos.length === 0
-  ) {
-    return <div>Sem vídeos disponíveis</div>;
-  }
-
-  const videoAtual = categoriaAtual.videos[0];
-
   const handleNext = () => {
-    if (videoIndex < categorias.length - 1) {
-      setVideoIndex(videoIndex + 1);
-    } else {
-      setVideoIndex(0);
-    }
+    setVideoIndex((prevIndex) =>
+      prevIndex < categorias.length - 1 ? prevIndex + 1 : 0
+    );
   };
 
   const handlePrevious = () => {
-    if (videoIndex > 0) {
-      setVideoIndex(videoIndex - 1);
-    } else {
-      setVideoIndex(categorias.length - 1);
-    }
+    setVideoIndex((prevIndex) =>
+      prevIndex > 0 ? prevIndex - 1 : categorias.length - 1
+    );
   };
 
   return (

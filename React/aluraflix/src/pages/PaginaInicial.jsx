@@ -4,7 +4,7 @@ import Titulo from "../components/Titulo";
 import Card from "../components/Card";
 import { useEffect, useState } from "react";
 import Modal from "../components/Modal";
-import { getData } from "../services/api";
+import { getCategoryData, getVideoData } from "../services/api";
 
 const Overlay = styled.div`
   display: ${(props) => (props.isOpen ? "block" : "none")};
@@ -20,6 +20,7 @@ const Overlay = styled.div`
 function PaginaInicial() {
   const [isModalOpen, setModalOpen] = useState(false);
   const [categorias, setCategorias] = useState([]);
+  const [videos, setVideos] = useState([]);
 
   const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
@@ -27,8 +28,10 @@ function PaginaInicial() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const categoriasDados = await getData();
+        const categoriasDados = await getCategoryData();
+        const videosDados = await getVideoData();
         setCategorias(categoriasDados);
+        setVideos(videosDados);
       } catch (error) {
         console.error("Erro ao buscar dados da API", error);
       }
@@ -45,15 +48,17 @@ function PaginaInicial() {
             {categoria.nome}
           </Titulo>
           <div style={{ display: "flex", gap: "70px", flexWrap: "wrap" }}>
-            {categoria.videos.map((video) => (
-              <Card
-                key={video.id}
-                capa={video.capa}
-                titulo={video.titulo}
-                onEditClick={openModal}
-                categoria={categoria}
-              />
-            ))}
+            {videos
+              .filter((video) => video.categoriaId === categoria.id)
+              .map((video) => (
+                <Card
+                  key={video.id}
+                  capa={video.capa}
+                  titulo={video.titulo}
+                  onEditClick={openModal}
+                  categoria={categoria}
+                />
+              ))}
           </div>
         </section>
       ))}

@@ -1,14 +1,13 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import axios from "axios";
 
 import Input from "../components/Input";
 import Select from "../components/Select";
 import TextArea from "../components/TextArea";
 import Botao from "../components/Botao";
 
-import { getData, postData } from "../services/api";
+import { getCategoryData, postVideo } from "../services/api";
 
 const Main = styled.main``;
 
@@ -72,17 +71,22 @@ const NovoVideo = () => {
   const [descricao, setDescricao] = useState("");
   const [categoria, setCategoria] = useState("");
 
+  const limparCampos = () => {
+    setTitulo("");
+    setImagem("");
+    setLink("");
+    setDescricao("");
+    setCategoria("");
+  };
+
   const handlePost = async (e) => {
     e.preventDefault();
 
     if (
-      !titulo.trim() ||
-      !imagem.trim() ||
-      !link.trim() ||
-      !categoria.trim() ||
-      !descricao.trim()
+      ![titulo, imagem, link, categoria, descricao].every((field) =>
+        field.trim()
+      )
     ) {
-      console.log({ titulo, imagem, link, categoria, descricao });
       alert("Favor preencher os campos necessários");
       return;
     }
@@ -93,38 +97,22 @@ const NovoVideo = () => {
       capa: imagem,
       link,
       descricao,
+      categoriaId: null,
     };
 
     try {
-      const categorias = await getData();
+      const categorias = await getCategoryData();
       const categoriaExistente = categorias.find(
         (cat) => cat.nome === categoria
       );
 
       if (categoriaExistente) {
-        const categoriaAtualizada = {
-          ...categoriaExistente,
-          videos: [...categoriaExistente.videos, novoVideo],
-        };
-
-        await axios.put(
-          `http://localhost:3000/categorias/${categoriaExistente.id}`,
-          categoriaAtualizada
-        );
+        novoVideo.categoriaId = categoriaExistente.id;
+        await postVideo(novoVideo);
         console.log("Vídeo adicionado à categoria existente");
-      } else {
-        const response = await postData({
-          nome: categoria,
-          videos: [novoVideo],
-          id: uuidv4(),
-        });
-        console.log("Novo vídeo adicionado", response);
-        setTitulo("");
-        setImagem("");
-        setLink("");
-        setDescricao("");
-        setCategoria("");
       }
+
+      limparCampos();
     } catch (error) {
       console.error("Erro ao adicionar vídeo", error);
     }
