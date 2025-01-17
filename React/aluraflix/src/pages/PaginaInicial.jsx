@@ -29,13 +29,11 @@ function PaginaInicial() {
   const [selectedVideo, setSelectedVideo] = useState(null);
 
   const openModal = (video) => {
-    console.log("Opening modal for video:", video);
     setSelectedVideo(video);
     setModalOpen(true);
   };
 
   const closeModal = () => {
-    console.log("Closing modal");
     setSelectedVideo(null);
     setModalOpen(false);
   };

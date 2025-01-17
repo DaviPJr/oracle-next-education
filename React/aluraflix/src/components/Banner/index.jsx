@@ -1,6 +1,11 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/effect-coverflow";
+
+import { Navigation, EffectCoverflow } from "swiper/modules";
 
 const BannerEstilizado = styled.section`
   display: flex;
@@ -69,72 +74,58 @@ const CapaEstilizada = styled.div`
 `;
 
 const Banner = ({ categorias, videos }) => {
-  const [videoIndex, setVideoIndex] = useState(0);
-  const [videoAtual, setVideoAtual] = useState(videos);
-
-  useEffect(() => {
-    if (categorias.length > 0 && videos.length > 0) {
-      const categoriaAtual = categorias[videoIndex];
-      const videoFiltrado = videos.find(
-        (video) => video.categoriaId === categoriaAtual.id
-      );
-      setVideoAtual(videoFiltrado || null);
-    }
-  }, [videoIndex, categorias, videos]);
-
-  if (
-    !categorias ||
-    categorias.length === 0 ||
-    !videos ||
-    videos.length === 0
-  ) {
-    return <div>Carregando...</div>;
-  }
-
-  const categoriaAtual = categorias[videoIndex];
-
-  const handleNext = () => {
-    setVideoIndex((prevIndex) =>
-      prevIndex < categorias.length - 1 ? prevIndex + 1 : 0
-    );
-  };
-
-  const handlePrevious = () => {
-    setVideoIndex((prevIndex) =>
-      prevIndex > 0 ? prevIndex - 1 : categorias.length - 1
-    );
-  };
-
   return (
-    <>
-      <BannerEstilizado
-        borderColor={categoriaAtual.cor}
-        backgroundImage={videoAtual.capa}
-      >
-        <BannerContainer>
-          <TituloEstilizado
-            backgroundColor={categoriaAtual.cor}
-            borderColor={categoriaAtual.cor}
-          >
-            {categoriaAtual.nome}
-          </TituloEstilizado>
-          <SubtituloEstilizado>{videoAtual.titulo}</SubtituloEstilizado>
-        </BannerContainer>
-        <CapaEstilizada borderColor={categoriaAtual.cor}>
-          <iframe
-            src={videoAtual.link}
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-          ></iframe>
-        </CapaEstilizada>
-      </BannerEstilizado>
-      <div style={{ textAlign: "center" }}>
-        <button onClick={handlePrevious}>Anterior</button>
-        <button onClick={handleNext}>Próximo</button>
-      </div>
-    </>
+    <Swiper
+      navigation={true}
+      modules={[Navigation, EffectCoverflow]}
+      effect="coverflow"
+      className="swiper"
+      loop={true}
+      speed={800}
+      coverflowEffect={{
+        rotate: 30,
+        stretch: -50,
+        depth: 500,
+        modifier: 2,
+        slideShadows: true,
+      }}
+      centeredSlides={true}
+      slidesPerView="auto"
+    >
+      {videos.map((video, index) => {
+        const categoriaAtual = categorias.find(
+          (categoria) => categoria.id === video.categoriaId
+        );
+
+        return (
+          <SwiperSlide key={index}>
+            <BannerEstilizado
+              borderColor={categoriaAtual.cor}
+              backgroundImage={video.capa}
+            >
+              <BannerContainer>
+                <TituloEstilizado
+                  backgroundColor={categoriaAtual.cor}
+                  borderColor={categoriaAtual.cor}
+                >
+                  {categoriaAtual.nome}
+                </TituloEstilizado>
+                <SubtituloEstilizado>{video.titulo}</SubtituloEstilizado>
+              </BannerContainer>
+              <CapaEstilizada borderColor={categoriaAtual.cor}>
+                <iframe
+                  src={video.link}
+                  title="YouTube video player"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                ></iframe>
+              </CapaEstilizada>
+            </BannerEstilizado>
+          </SwiperSlide>
+        );
+      })}
+    </Swiper>
   );
 };
 

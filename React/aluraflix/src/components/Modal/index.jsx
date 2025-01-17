@@ -60,15 +60,11 @@ const BotoesContainer = styled.div`
 
 // eslint-disable-next-line react/prop-types, no-unused-vars
 const Modal = ({ isOpen, closeModal, video, onSave }) => {
-  console.log("Modal isOpen:", isOpen);
-
   const [titulo, setTitulo] = useState("");
   const [capa, setCapa] = useState("");
   const [link, setLink] = useState("");
   const [descricao, setDescricao] = useState("");
   const [categoriaId, setCategoriaId] = useState("");
-
-  console.log("Modal States: ", { titulo, capa, link, descricao, categoriaId });
 
   const limparCampos = () => {
     setTitulo("");
@@ -80,13 +76,6 @@ const Modal = ({ isOpen, closeModal, video, onSave }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Submitting data:", {
-      titulo,
-      capa,
-      link,
-      descricao,
-      categoriaId,
-    });
     const modalData = { titulo, capa, link, descricao, categoriaId };
     onSave(video.id, modalData);
   };
