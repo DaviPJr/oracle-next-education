@@ -4,7 +4,7 @@ import Titulo from "../components/Titulo";
 import Card from "../components/Card";
 import { useEffect, useState } from "react";
 import Modal from "../components/Modal";
-import { getCategoryData, getVideoData } from "../services/api";
+import { getCategoryData, getVideoData, deleteVideoId } from "../services/api";
 
 const Overlay = styled.div`
   display: ${(props) => (props.isOpen ? "block" : "none")};
@@ -24,6 +24,21 @@ function PaginaInicial() {
 
   const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
+
+  const deleteVideo = async (videoId) => {
+    const confirmDelete = window.confirm(
+      "Tem certeza que deseja deletar este vídeo?"
+    );
+    if (!confirmDelete) return;
+    const videosFiltrados = videos.filter((video) => video.id !== videoId);
+    setVideos(videosFiltrados);
+    try {
+      await deleteVideoId(videoId);
+      return videosFiltrados;
+    } catch (error) {
+      console.error("Erro ao excluir o vídeo", error);
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -56,6 +71,7 @@ function PaginaInicial() {
                   capa={video.capa}
                   titulo={video.titulo}
                   onEditClick={openModal}
+                  onDeleteClick={() => deleteVideo(video.id)}
                   categoria={categoria}
                 />
               ))}

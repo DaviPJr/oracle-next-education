@@ -41,3 +41,13 @@ export const postVideo = async (data) => {
     throw error;
   }
 };
+
+export const deleteVideoId = async (id) => {
+  try {
+    const response = await axios.delete(`http://localhost:3000/videos/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Erro ao excluir o vídeo", error);
+    throw error;
+  }
+};

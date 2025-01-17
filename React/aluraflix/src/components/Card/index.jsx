@@ -65,7 +65,7 @@ const CardBotao = styled.button`
 `;
 
 // eslint-disable-next-line react/prop-types
-const Card = ({ capa, titulo, onEditClick, categoria }) => {
+const Card = ({ capa, titulo, onEditClick, categoria, onDeleteClick }) => {
   return (
     <>
       <CardContainer>
@@ -77,7 +77,7 @@ const Card = ({ capa, titulo, onEditClick, categoria }) => {
         <CardInfos categoria={categoria}>
           <CardBotoes>
             <img src={deletar} alt="Deletar" />
-            <CardBotao>DELETAR</CardBotao>
+            <CardBotao onClick={onDeleteClick}>DELETAR</CardBotao>
           </CardBotoes>
           <CardBotoes>
             <img src={editar} alt="Editar" />
