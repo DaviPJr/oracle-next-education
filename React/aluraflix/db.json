@@ -18,11 +18,11 @@
   ],
   "videos": [
     {
-      "id": "1",
-      "titulo": "O que faz uma desenvolvedora front-end?",
+      "titulo": "O que faz um desenvolvedor front-end?",
       "capa": "https://img.youtube.com/vi/ZY3-MFxVdEw/hqdefault.jpg",
       "link": "https://www.youtube.com/embed/ZY3-MFxVdEw?si=euolEJJo7lLDIAsV",
-      "categoriaId": "e2d9"
+      "categoriaId": "e2d9",
+      "id": "1"
     },
     {
       "id": "2",

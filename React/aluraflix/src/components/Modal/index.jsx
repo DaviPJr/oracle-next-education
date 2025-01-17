@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import styled from "styled-components";
 import Input from "../Input";
 import Select from "../Select";
@@ -5,6 +6,7 @@ import TextArea from "../TextArea";
 import Botao from "../Botao";
 
 import fechar from "../../assets/cross.png";
+import { useEffect, useState } from "react";
 
 const ModalEstilizado = styled.div`
   width: 60%;
@@ -57,26 +59,112 @@ const BotoesContainer = styled.div`
 `;
 
 // eslint-disable-next-line react/prop-types, no-unused-vars
-const Modal = ({ isOpen, closeModal }) => {
+const Modal = ({ isOpen, closeModal, video, onSave }) => {
+  console.log("Modal isOpen:", isOpen);
+
+  const [titulo, setTitulo] = useState("");
+  const [capa, setCapa] = useState("");
+  const [link, setLink] = useState("");
+  const [descricao, setDescricao] = useState("");
+  const [categoriaId, setCategoriaId] = useState("");
+
+  console.log("Modal States: ", { titulo, capa, link, descricao, categoriaId });
+
+  const limparCampos = () => {
+    setTitulo("");
+    setCapa("");
+    setLink("");
+    setDescricao("");
+    setCategoriaId("");
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Submitting data:", {
+      titulo,
+      capa,
+      link,
+      descricao,
+      categoriaId,
+    });
+    const modalData = { titulo, capa, link, descricao, categoriaId };
+    onSave(video.id, modalData);
+  };
+
+  useEffect(() => {
+    if (video) {
+      console.log("Setting video data for modal:", video);
+      setTitulo(video.titulo);
+      setCapa(video.capa);
+      setLink(video.link);
+      setCategoriaId(video.categoriaId);
+      setDescricao(video.descricao);
+    }
+  }, [video]);
+
   return (
     <>
       <ModalEstilizado id="editDialog" isOpen={isOpen}>
-        <BotaoFecharModal onClick={closeModal}>
+        <BotaoFecharModal
+          onClick={() => {
+            console.log("Closing modal via close button");
+            closeModal();
+          }}
+        >
           <img src={fechar} alt="Botão fecha modal" />
         </BotaoFecharModal>
         <TituloModal>EDITAR CARD:</TituloModal>
         <ContainerModal>
-          <Input placeholder="Insira o título aqui">Título</Input>
-          <Select />
-          <Input placeholder="Insira a imagem">Imagem</Input>
-          <Input placeholder="Insira o link">Vídeo</Input>
-          <TextAreaContainer>
-            <TextArea />
-            <BotoesContainer>
-              <Botao type="submit">SALVAR</Botao>
-              <Botao type="reset">LIMPAR</Botao>
-            </BotoesContainer>
-          </TextAreaContainer>
+          <form onSubmit={handleSubmit}>
+            <Input
+              name="titulo"
+              value={titulo}
+              onChange={(e) => setTitulo(e.target.value)}
+              placeholder="Insira o título aqui"
+            >
+              Título
+            </Input>
+            <Select
+              name="categoriaId"
+              value={categoriaId}
+              onChange={(e) => setCategoriaId(e.target.value)}
+            />
+            <Input
+              name="capa"
+              value={capa}
+              onChange={(e) => setCapa(e.target.value)}
+              placeholder="Insira a imagem"
+            >
+              Imagem
+            </Input>
+            <Input
+              name="link"
+              value={link}
+              onChange={(e) => setLink(e.target.value)}
+              placeholder="Insira o link"
+            >
+              Vídeo
+            </Input>
+            <TextAreaContainer>
+              <TextArea
+                name="descricao"
+                value={descricao}
+                onChange={(e) => setDescricao(e.target.value)}
+              />
+              <BotoesContainer>
+                <Botao type="submit">SALVAR</Botao>
+                <Botao
+                  type="button"
+                  onClick={() => {
+                    console.log("LIMPAR button clicked");
+                    limparCampos();
+                  }}
+                >
+                  LIMPAR
+                </Botao>
+              </BotoesContainer>
+            </TextAreaContainer>
+          </form>
         </ContainerModal>
       </ModalEstilizado>
     </>

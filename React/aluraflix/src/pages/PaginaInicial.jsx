@@ -4,7 +4,12 @@ import Titulo from "../components/Titulo";
 import Card from "../components/Card";
 import { useEffect, useState } from "react";
 import Modal from "../components/Modal";
-import { getCategoryData, getVideoData, deleteVideoId } from "../services/api";
+import {
+  getCategoryData,
+  getVideoData,
+  updateVideo,
+  deleteVideoId,
+} from "../services/api";
 
 const Overlay = styled.div`
   display: ${(props) => (props.isOpen ? "block" : "none")};
@@ -21,9 +26,32 @@ function PaginaInicial() {
   const [isModalOpen, setModalOpen] = useState(false);
   const [categorias, setCategorias] = useState([]);
   const [videos, setVideos] = useState([]);
+  const [selectedVideo, setSelectedVideo] = useState(null);
 
-  const openModal = () => setModalOpen(true);
-  const closeModal = () => setModalOpen(false);
+  const openModal = (video) => {
+    console.log("Opening modal for video:", video);
+    setSelectedVideo(video);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    console.log("Closing modal");
+    setSelectedVideo(null);
+    setModalOpen(false);
+  };
+
+  const saveVideoChanges = async (id, updatedData) => {
+    try {
+      const updatedVideo = await updateVideo(id, updatedData);
+      console.log("Updated video:", updatedVideo);
+      setVideos((prevVideos) =>
+        prevVideos.map((video) => (video.id === id ? updatedVideo : video))
+      );
+      closeModal();
+    } catch (error) {
+      console.error("Erro ao salvar alterações", error);
+    }
+  };
 
   const deleteVideo = async (videoId) => {
     const confirmDelete = window.confirm(
@@ -70,7 +98,7 @@ function PaginaInicial() {
                   key={video.id}
                   capa={video.capa}
                   titulo={video.titulo}
-                  onEditClick={openModal}
+                  onEditClick={() => openModal(video)}
                   onDeleteClick={() => deleteVideo(video.id)}
                   categoria={categoria}
                 />
@@ -79,7 +107,12 @@ function PaginaInicial() {
         </section>
       ))}
       <Overlay isOpen={isModalOpen} onClick={closeModal} />
-      <Modal isOpen={isModalOpen} closeModal={closeModal} />
+      <Modal
+        video={selectedVideo}
+        onSave={saveVideoChanges}
+        isOpen={isModalOpen}
+        closeModal={closeModal}
+      />
     </>
   );
 }

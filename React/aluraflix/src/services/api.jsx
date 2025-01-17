@@ -42,6 +42,19 @@ export const postVideo = async (data) => {
   }
 };
 
+export const updateVideo = async (id, updatedData) => {
+  try {
+    const response = await axios.put(
+      `http://localhost:3000/videos/${id}`,
+      updatedData
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Erro ao atualizar informações do vídeo", error);
+    throw error;
+  }
+};
+
 export const deleteVideoId = async (id) => {
   try {
     const response = await axios.delete(`http://localhost:3000/videos/${id}`);
